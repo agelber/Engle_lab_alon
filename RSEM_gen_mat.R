@@ -1,3 +1,11 @@
+#To use, put your RSEM outputs (of one type) in a folder, then choose a matrix name and run RSEM_gen_mat and answer prompts
+#e.g. 
+#my_matrix <- RSEM_gen_mat()
+#input
+#isoforms
+#RSEM/genes
+#TPM
+
 RSEM_gen_mat <- function(){
   
 #get inputs
