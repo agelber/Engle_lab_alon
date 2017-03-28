@@ -1,3 +1,7 @@
+# compares two clusters, can be from different or second objects
+# inputs are first seuart object, cluter for first seurat object, second seuart object, cluter for second seurat object
+# returns list of vectors, [upregulated shared genes, downregulated shared genes]
+
 HowSimilar <- function(firstobj, clust1, secobj, clust2){
   sumry <- vector(mode = "numeric", 6) 
   marks1 <- FindMarkers(firstobj, ident.1 = clust1, min.pct = 0.25)
