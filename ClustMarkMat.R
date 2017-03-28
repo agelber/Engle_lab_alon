@@ -1,3 +1,6 @@
+#returns matrix with top 100 differentially upregulated genes and downregulated genes
+#for each cluster and the correcsponding differential expression
+
 MakeClusterMatrix <- function(x){
   
 nclusts <- length(levels(x@ident))
