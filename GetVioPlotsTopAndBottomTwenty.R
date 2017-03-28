@@ -1,3 +1,6 @@
+# inputs are matrix geneterated by ClustMarkMat and coresponding Seurat object
+# generates violin plots for top 20 upregulated and down reg genes for each cluster and saves them in wd
+
 GetVioPlotsTopAndBottomTwenty <- function(matrx, serobj){
   
   j <- 0.5*(ncol(matrx))
