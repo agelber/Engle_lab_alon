@@ -6,7 +6,7 @@
 #RSEM/genes
 #TPM
 
-RSEM_gen_mat <- function(){
+RSEM_gen_mat1 <- function(){
   
 #get inputs
 b <- readline(prompt="Enter RSEM file type : isoforms or genes? ")
@@ -28,14 +28,13 @@ pb   <- txtProgressBar(1, size, style=3)
 
 for (f in file_list){
   t <- paste(g, "/", f, sep = "")
-  m <- as.matrix(read.table(t ,header = T))
+  m <- read.table(t ,header = T)
   
   if(i==1){
     out <- matrix( nrow = nrow(m), ncol = size)
     rownames(out) <- m[,1]
   }
-  
-  if(rownames(out)==m[,1]){print("something is wrong with your inputs, gene names (rownames )are not the same")}
+  if(isTRUE(all.equal(rownames(out),m[,1]))){print("something is wrong with your inputs, gene names (rownames )are not the same")}
   
   if (b=="genes"){ v[i] <- gsub(".genes.results", "", f)}
   if (b == "isoforms") {v[i] <- gsub(".isoforms.results", "", f)}
@@ -46,6 +45,7 @@ for (f in file_list){
   
   i <- i+1
 }
+print(i)
 
 colnames(out) <- v
 class(out) <- "numeric"
