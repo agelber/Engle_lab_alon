@@ -45,7 +45,7 @@ for (f in file_list){
   
   i <- i+1
 }
-print(i)
+print(paste(i, " files", sep = ""))
 
 colnames(out) <- v
 class(out) <- "numeric"
