@@ -35,6 +35,8 @@ for (f in file_list){
     rownames(out) <- m[,1]
   }
   
+  if(rownames(out)==m[,1]){print("something is wrong with your inputs, gene names (rownames )are not the same")}
+  
   if (b=="genes"){ v[i] <- gsub(".genes.results", "", f)}
   if (b == "isoforms") {v[i] <- gsub(".isoforms.results", "", f)}
     
