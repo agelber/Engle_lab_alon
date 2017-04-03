@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#create a gene id,gene name csv from gtf file
 while read in; do
     gid=$in
     gname=$in
@@ -12,7 +12,7 @@ while read in; do
     gname=${gname##$pref}
     gname=${gname%%$suf}
     addto=$gid,$gname
-    echo $addto >> geneListrep.csv
+    echo $addto >> geneListrep.csv &
 done < $1
 
 sort -u geneListrep.csv >> geneList.csv
