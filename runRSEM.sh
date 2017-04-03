@@ -1,3 +1,7 @@
+#!/bin/bash
+#argument is base directory containing all fastq directories e.g A1, A2, A3...
+#if using powerful computer, add ampersand on line before done to speed up
+
 folder=$1
 add="/*/"
 dir=$folder$add
