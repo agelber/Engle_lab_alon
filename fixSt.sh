@@ -1,5 +1,4 @@
-#!/bin/bash                                                                     
-#!/bin/bash                                                                     
+#!/bin/bash                                                                                                                                      
 
 fdir=$1"*"
 
