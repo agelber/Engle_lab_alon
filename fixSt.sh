@@ -1,7 +1,15 @@
 #!/bin/bash                                                                     
+#!/bin/bash                                                                     
 
-f=$1
-sort $f | uniq -d | grep "@"  > temp.txt
+fdir=$1"*"
+
+for f in $fdir
+do
+    (
+ for i in 1 2
+ do
+
+sort $f | uniq -d | grep ^@  > "$f".txt
 
     while read in; do
         rname=$in
@@ -10,31 +18,23 @@ sort $f | uniq -d | grep "@"  > temp.txt
         while grep -q "$rname" $f; do
             replace=${rname/0:0/$i:0}
             sed -i.bu "0,/$rname/s/$rname/$replace/" "$f"
-            i=$i+1
+            let "i+=1"
+	    echo $i
         done
 
-    done < temp.txt
+    done < "$f".txt
 
 
-#!/bin/bash                                                                     
 
-fdir=$1"/*"
+rm "$f".txt
 
-for f in $fdir
-do
-    sort $f | uniq -d | grep "@"  > temp.txt
+done
+echo done'\n' >> progress.txt
 
-    while read in; do
-        rname=$in
-        i=1
-        rname=${rname%" "*}
-        while grep -q "$rname" $f; do
-            replace=${rname/0:0/$i:0}
-            sed '0,/$rname/{s/$rname/$replace/}' $f
-            i=$i+1
-        done
+)&
 
-    done < temp.txt
-
-
+ background=( $(jobs -p) )
+    if (( ${#background[@]} ==40)); then
+	wait -n
+     fi
 done
