@@ -5,8 +5,6 @@ fdir=$1"*"
 for f in $fdir
 do
     (
- for i in 1 2
- do
 
 sort $f | uniq -d | grep ^@  > "$f".txt
 
@@ -28,7 +26,7 @@ sort $f | uniq -d | grep ^@  > "$f".txt
 rm "$f".txt
 
 done
-echo done'\n' >> progress.txt
+echo "done" >> progress.txt
 
 )&
 
